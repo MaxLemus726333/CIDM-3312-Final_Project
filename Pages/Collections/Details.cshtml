@@ -1,0 +1,66 @@
+@page
+@model CIDM_3312_Final_Project.Pages_Collections.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Collection</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Collection.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Collection.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Collection.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Collection.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Collection.CollectionCards)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach(var card in Model.Collection.CollectionCards!)
+            {
+                <form method="post">
+                    <input type="hidden" asp-for="CardIDToDelete" value="@card.Card.CardID" />
+                    @Html.DisplayFor(model => card.Card.Description)
+                    <button type="submit" class="btn btn-danger btn-sm my-1" asp-page-handler="CardDelete" asp-route-id="@Model.Collection.CollectionID">Delete Card</button>
+                    <br>
+                </form>
+            }
+        </dd>
+        <form method="post">
+            <div class="row align-items-center">
+                <dt class="col-sm-2">
+                    <label asp-for="CardIDToAdd" class="control-label"></label>
+                </dt>
+                <div class="col-auto">
+                    <select asp-for="CardIDToAdd" asp-items="Model.CardsDropDown" class="form-select">
+                        <option value="">Choose...</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary" asp-page-handler="AddCard" asp-route-id="@Model.Collection.CollectionID">Add Card</button>
+                </div>
+                <div class="col-auto">
+                    <span asp-validation-for="CardIDToAdd" class="text-danger"></span>
+                </div>
+        </form>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Collection.CollectionID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
