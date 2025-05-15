@@ -42,6 +42,7 @@ namespace CIDM_3312_Final_Project.Pages_Collections
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
+        //Yeah wanna know what else should be protected my eyesight, but noooooo I wanted to choose a career where I gotta stare at something for hours on end.
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync(int[] selectedCards)
         {
@@ -91,7 +92,7 @@ namespace CIDM_3312_Final_Project.Pages_Collections
                 collectionToUpdate.CollectionCards = new List<CollectionCard>();
                 return;
             }
-
+//So much trial and error happened from here and down but found random typos
             List<int> ownedCards = collectionToUpdate.CollectionCards!.Select(c => c.CardID).ToList();
             List<int> selectedCardList = selectedCards.ToList();
 

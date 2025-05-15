@@ -70,6 +70,23 @@ public static class SeedData
         context.AddRange(collections);
         context.SaveChanges();
 
+        //     List<Gen> gen = new List<Gen>
+        // {
+        //     new Card { Description = "Generation 1" },
+        //     new Card { Description = "Generation 2" },
+        //     new Card { Description = "Generation 3" },
+        //     new Card { Description = "Generation 4" },
+        //     new Card { Description = "Generation 5" },
+        //     new Card { Description = "Generation 6" },
+        //     new Card { Description = "Generation 7" },
+        //     new Card { Description = "Generation 8" },
+        //     new Card { Description = "Generation 9" }
+        // };
+        // context.AddRange(gen);
+        // context.SaveChanges();
+//AAAAHHHHHHH why did I choose this, IDK how I, of all people 
+//forgot how many pokemon there are but oh well did this to myself
+
         List<Card> cards = new List<Card>
         {
             new Card { Description = "Mewtwo" },

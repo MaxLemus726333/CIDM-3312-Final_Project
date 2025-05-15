@@ -4,9 +4,15 @@ public class Card
 {
     public int CardID {get; set;} // Primary Key
     public string Description {get; set;} = string.Empty;
+    // public string Image {get; set; } = string.Empty
 
     public List<CollectionCard>? CollectionCards {get; set;} = default!; // Navigation property.
 }
+// public class Gen
+// {
+//     public string GenID {get; set;} = string.Empty;
+// }
+//lets break this
 
 public class CollectionCard
 {
@@ -14,4 +20,5 @@ public class CollectionCard
     public int CollectionID {get; set;} // Composite Primary Key, Foreign Key 2
     public Collection Collection {get; set;} = default!; // Navigation Property
     public Card Card {get; set;} = default!; // Navigation Property
+    // public Gen Generation {get; set;} = default!; // Navigation Property
 }
